@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>仲夏后台UI</title>
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="description" content="仲夏后台UI" />
+<link rel="stylesheet" th:href="@{css/bootstrap.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{css/animate.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{css/font-awesome.min.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{css/simple-line-icons.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{css/font.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{css/app.css}" type="text/css" />
+</head>
+<body data-ng-controller="AppCtrl">
+	<div class="app" id="app" data-ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" data-ui-view=""></div>
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Angular -->
+	<script th:src="@{plugins/angular/angular.js}"></script>
+	<script th:src="@{plugins/angular/angular-animate/angular-animate.js}"></script>
+	<script th:src="@{plugins/angular/angular-cookies/angular-cookies.js}"></script>
+	<script th:src="@{plugins/angular/angular-resource/angular-resource.js}"></script>
+	<script th:src="@{plugins/angular/angular-sanitize/angular-sanitize.js}"></script>
+	<script th:src="@{plugins/angular/angular-touch/angular-touch.js}"></script>
+	<!-- Vendor -->
+	<script th:src="@{plugins/angular/angular-ui-router/angular-ui-router.js}"></script>
+	<script th:src="@{plugins/angular/ngstorage/ngStorage.js}"></script>
+	<!-- bootstrap -->
+	<script th:src="@{plugins/angular/angular-bootstrap/ui-bootstrap-tpls.js}"></script>
+	<!-- lazyload -->
+	<script th:src="@{plugins/angular/oclazyload/ocLazyLoad.js}"></script>
+	<!-- translate -->
+	<script th:src="@{plugins/angular/angular-translate/angular-translate.js}"></script>
+	<script th:src="@{plugins/angular/angular-translate/loader-static-files.js}"></script>
+	<script th:src="@{plugins/angular/angular-translate/storage-cookie.js}"></script>
+	<script th:src="@{plugins/angular/angular-translate/storage-local.js}"></script>
+	<!-- App -->
+	<script th:src="@{js/app.js}"></script>
+	<script th:src="@{js/config.js}"></script>
+	<script th:src="@{js/config.lazyload.js}"></script>
+	<script th:src="@{js/config.router.js}"></script>
+	<script th:src="@{js/main.js}"></script>
+	<script th:src="@{js/services/ui-load.js}"></script>
+	<script th:src="@{js/filters/fromNow.js}"></script>
+	<script th:src="@{js/directives/setnganimate.js}"></script>
+	<script th:src="@{js/directives/ui-butterbar.js}"></script>
+	<script th:src="@{js/directives/ui-focus.js}"></script>
+	<script th:src="@{js/directives/ui-fullscreen.js}"></script>
+	<script th:src="@{js/directives/ui-jq.js}"></script>
+	<script th:src="@{js/directives/ui-module.js}"></script>
+	<script th:src="@{js/directives/ui-nav.js}"></script>
+	<script th:src="@{js/directives/ui-scroll.js}"></script>
+	<script th:src="@{js/directives/ui-shift.js}"></script>
+	<script th:src="@{js/directives/ui-toggleclass.js}"></script>
+	<script th:src="@{js/directives/ui-validate.js}"></script>
+	<script th:src="@{js/controllers/bootstrap.js}"></script>
+</body>
+</html>
