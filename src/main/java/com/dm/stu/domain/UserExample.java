@@ -245,73 +245,73 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andLoginameIsNull() {
-            addCriterion("loginame is null");
+        public Criteria andPhoneNumberIsNull() {
+            addCriterion("phone_number is null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameIsNotNull() {
-            addCriterion("loginame is not null");
+        public Criteria andPhoneNumberIsNotNull() {
+            addCriterion("phone_number is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameEqualTo(String value) {
-            addCriterion("loginame =", value, "loginame");
+        public Criteria andPhoneNumberEqualTo(String value) {
+            addCriterion("phone_number =", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameNotEqualTo(String value) {
-            addCriterion("loginame <>", value, "loginame");
+        public Criteria andPhoneNumberNotEqualTo(String value) {
+            addCriterion("phone_number <>", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameGreaterThan(String value) {
-            addCriterion("loginame >", value, "loginame");
+        public Criteria andPhoneNumberGreaterThan(String value) {
+            addCriterion("phone_number >", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameGreaterThanOrEqualTo(String value) {
-            addCriterion("loginame >=", value, "loginame");
+        public Criteria andPhoneNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("phone_number >=", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameLessThan(String value) {
-            addCriterion("loginame <", value, "loginame");
+        public Criteria andPhoneNumberLessThan(String value) {
+            addCriterion("phone_number <", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameLessThanOrEqualTo(String value) {
-            addCriterion("loginame <=", value, "loginame");
+        public Criteria andPhoneNumberLessThanOrEqualTo(String value) {
+            addCriterion("phone_number <=", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameLike(String value) {
-            addCriterion("loginame like", value, "loginame");
+        public Criteria andPhoneNumberLike(String value) {
+            addCriterion("phone_number like", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameNotLike(String value) {
-            addCriterion("loginame not like", value, "loginame");
+        public Criteria andPhoneNumberNotLike(String value) {
+            addCriterion("phone_number not like", value, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameIn(List<String> values) {
-            addCriterion("loginame in", values, "loginame");
+        public Criteria andPhoneNumberIn(List<String> values) {
+            addCriterion("phone_number in", values, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameNotIn(List<String> values) {
-            addCriterion("loginame not in", values, "loginame");
+        public Criteria andPhoneNumberNotIn(List<String> values) {
+            addCriterion("phone_number not in", values, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameBetween(String value1, String value2) {
-            addCriterion("loginame between", value1, value2, "loginame");
+        public Criteria andPhoneNumberBetween(String value1, String value2) {
+            addCriterion("phone_number between", value1, value2, "phoneNumber");
             return (Criteria) this;
         }
 
-        public Criteria andLoginameNotBetween(String value1, String value2) {
-            addCriterion("loginame not between", value1, value2, "loginame");
+        public Criteria andPhoneNumberNotBetween(String value1, String value2) {
+            addCriterion("phone_number not between", value1, value2, "phoneNumber");
             return (Criteria) this;
         }
 

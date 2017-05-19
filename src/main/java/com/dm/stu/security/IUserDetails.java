@@ -18,7 +18,7 @@ public class IUserDetails implements UserDetails {
 	private Collection<IGrantedAuthority> authorities = new ArrayList<IGrantedAuthority>();
 
 	public IUserDetails(User user) {
-		this.username = user.getLoginame();
+		this.username = user.getPhoneNumber();
 		this.password = user.getPassword();
 		this.accountNonLocked = !user.getAccountLocked();
 		this.enabled = user.getAccountEnabled();

@@ -15,12 +15,12 @@ public class IUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userService.getUserByLoginame(username);
+		User user = userService.getUserByPhoneNumber(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("无效的用户名");
+			throw new UsernameNotFoundException("当前手机号未注册");
 		}
 		IUserDetails userDetails = new IUserDetails(user);
-		userDetails.addAuthority(new IGrantedAuthority("ROLE_user"));
+		userDetails.addAuthority(new IGrantedAuthority("user"));
 		return userDetails;
 	}
 

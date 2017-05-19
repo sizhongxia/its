@@ -15,10 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.dm.stu.enums.IDType;
-import com.dm.stu.service.SerialNumberService;
 import com.dm.stu.service.UserService;
-import com.dm.stu.util.SecurityUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RunWith(SpringRunner.class)
@@ -31,9 +28,6 @@ public class StuApplicationTests {
 	WebApplicationContext webApplicationConnect;
 
 	@Autowired
-	SerialNumberService serialNumberService;
-
-	@Autowired
 	UserService userService;
 
 	@Before
@@ -43,12 +37,11 @@ public class StuApplicationTests {
 
 	@Test
 	public void UserIdEncodeTest() {
-		System.out.println(SecurityUtil.encode(serialNumberService.init(IDType.USER)));
 	}
 
 	@Test
 	public void testTransactional() throws Exception {
-		userService.save();
+		// userService.save();
 	}
 
 	@Test

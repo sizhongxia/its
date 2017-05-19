@@ -22,6 +22,12 @@ public class AppController implements Serializable {
 	@Autowired
 	UserService userService;
 
+	@ResponseBody
+	@GetMapping("test")
+	public String test(Map<String, Object> data) {
+		return "";
+	}
+
 	@GetMapping("index")
 	public String index(Map<String, Object> data) {
 		return "index";

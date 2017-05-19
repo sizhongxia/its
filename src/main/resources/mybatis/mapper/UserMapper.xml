@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dm.stu.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.dm.stu.domain.User">
-    <id column="user_id" jdbcType="CHAR" property="userId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="loginame" jdbcType="VARCHAR" property="loginame" />
-    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="account_locked" jdbcType="BIT" property="accountLocked" />
     <result column="account_enabled" jdbcType="BIT" property="accountEnabled" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, nickname, loginame, password, account_locked, account_enabled, create_time
+    user_id, nickname, phone_number, password, account_locked, account_enabled, create_time
   </sql>
   <select id="selectByExample" parameterType="com.dm.stu.domain.UserExample" resultMap="BaseResultMap">
     select
@@ -90,11 +90,11 @@
     select 
     <include refid="Base_Column_List" />
     from xt_user
-    where user_id = #{userId,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from xt_user
-    where user_id = #{userId,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.dm.stu.domain.UserExample">
     delete from xt_user
@@ -103,11 +103,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dm.stu.domain.User">
-    insert into xt_user (user_id, nickname, loginame, 
+    insert into xt_user (user_id, nickname, phone_number, 
       password, account_locked, account_enabled, 
       create_time)
-    values (#{userId,jdbcType=CHAR}, #{nickname,jdbcType=VARCHAR}, #{loginame,jdbcType=VARCHAR}, 
-      #{password,jdbcType=CHAR}, #{accountLocked,jdbcType=BIT}, #{accountEnabled,jdbcType=BIT}, 
+    values (#{userId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{accountLocked,jdbcType=BIT}, #{accountEnabled,jdbcType=BIT}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.dm.stu.domain.User">
@@ -119,8 +119,8 @@
       <if test="nickname != null">
         nickname,
       </if>
-      <if test="loginame != null">
-        loginame,
+      <if test="phoneNumber != null">
+        phone_number,
       </if>
       <if test="password != null">
         password,
@@ -137,16 +137,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=CHAR},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="nickname != null">
         #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="loginame != null">
-        #{loginame,jdbcType=VARCHAR},
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        #{password,jdbcType=CHAR},
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="accountLocked != null">
         #{accountLocked,jdbcType=BIT},
@@ -169,16 +169,16 @@
     update xt_user
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=CHAR},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginame != null">
-        loginame = #{record.loginame,jdbcType=VARCHAR},
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
-        password = #{record.password,jdbcType=CHAR},
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.accountLocked != null">
         account_locked = #{record.accountLocked,jdbcType=BIT},
@@ -196,10 +196,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update xt_user
-    set user_id = #{record.userId,jdbcType=CHAR},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
       nickname = #{record.nickname,jdbcType=VARCHAR},
-      loginame = #{record.loginame,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=CHAR},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
       account_locked = #{record.accountLocked,jdbcType=BIT},
       account_enabled = #{record.accountEnabled,jdbcType=BIT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -213,11 +213,11 @@
       <if test="nickname != null">
         nickname = #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="loginame != null">
-        loginame = #{loginame,jdbcType=VARCHAR},
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        password = #{password,jdbcType=CHAR},
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="accountLocked != null">
         account_locked = #{accountLocked,jdbcType=BIT},
@@ -229,16 +229,16 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dm.stu.domain.User">
     update xt_user
     set nickname = #{nickname,jdbcType=VARCHAR},
-      loginame = #{loginame,jdbcType=VARCHAR},
-      password = #{password,jdbcType=CHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       account_locked = #{accountLocked,jdbcType=BIT},
       account_enabled = #{accountEnabled,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

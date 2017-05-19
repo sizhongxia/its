@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUserByLoginame(String loginame) {
+	public User getUserByPhoneNumber(String phoneNumber) {
 		UserExample example = new UserExample();
-		example.createCriteria().andLoginameEqualTo(loginame);
+		example.createCriteria().andPhoneNumberEqualTo(phoneNumber);
 		List<User> list = userMapper.selectByExample(example);
 		if (list != null && !list.isEmpty()) {
 			return list.get(0);

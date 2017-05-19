@@ -23,23 +23,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/webjars/**");
+		web.ignoring().antMatchers("/index", "/test", "/main", "/resources/**", "/webjars/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-        .antMatchers("/m/**").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .defaultSuccessUrl("/m/index")
-        .permitAll()
-        .and()
-        .logout()
-        .logoutSuccessUrl("/index")
-        .permitAll();
+		http.authorizeRequests().antMatchers("/m/**").permitAll().anyRequest().authenticated().and().formLogin()
+				.loginPage("/login").defaultSuccessUrl("/m/index").permitAll().and().logout().logoutSuccessUrl("/index")
+				.permitAll();
 	}
 
 	@Autowired

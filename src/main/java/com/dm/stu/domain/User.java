@@ -7,7 +7,7 @@ public class User {
 
     private String nickname;
 
-    private String loginame;
+    private String phoneNumber;
 
     private String password;
 
@@ -33,12 +33,12 @@ public class User {
         this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public String getLoginame() {
-        return loginame;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setLoginame(String loginame) {
-        this.loginame = loginame == null ? null : loginame.trim();
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber == null ? null : phoneNumber.trim();
     }
 
     public String getPassword() {

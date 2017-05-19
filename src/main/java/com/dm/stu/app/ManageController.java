@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("m")
 @PreAuthorize("hasRole('user')")
 public class ManageController {
+
 	@GetMapping("index")
 	public String index(Map<String, Object> data) {
 		return "manage/index";
 	}
+
 }

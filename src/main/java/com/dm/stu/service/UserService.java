@@ -3,10 +3,10 @@ package com.dm.stu.service;
 import com.dm.stu.domain.User;
 
 public interface UserService {
-	
+
 	User getUserById(String userId);
 
-	User getUserByLoginame(String loginame);
+	User getUserByPhoneNumber(String phoneNumber);
 
 	void save();
 }
