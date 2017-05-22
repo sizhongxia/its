@@ -1,0 +1,94 @@
+<ul class="header-inner clearfix">
+    <li id="menu-trigger" data-target="mainmenu" data-toggle-sidebar="" data-model-left="mactrl.sidebarToggle.left" data-ng-class="{ 'open': mactrl.sidebarToggle.left === true }">
+        <div class="line-wrap">
+            <div class="line top"></div>
+            <div class="line center"></div>
+            <div class="line bottom"></div>  
+        </div>
+    </li>
+
+    <li class="logo hidden-xs">
+        <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)">后台管理</a>
+    </li>
+
+    <li class="pull-right">
+        <ul class="top-menu">
+        
+        	<li id="toggle-width">
+                <div class="toggle-switch">
+                    <input id="tw-switch" type="checkbox" hidden="hidden" data-change-layout="mactrl.layoutType"/>
+                    <label for="tw-switch" class="ts-helper"></label>
+                </div>
+            </li>
+
+            <li id="top-search">
+                <a href="" data-ng-click="hctrl.openSearch()"><i class="tm-icon zmdi zmdi-search"></i></a>
+            </li>
+            
+            <li class="dropdown" uib-dropdown="">
+                <a uib-dropdown-toggle="" href="">
+                    <i class="tm-icon zmdi zmdi-notifications"></i>
+                    <i class="tmn-counts" ng-if="hctrl.messageResult.data.length > 0">{{hctrl.messageResult.data.length}}</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg stop-propagate pull-right">
+                    <div class="listview" id="notifications">
+                        <div class="lv-header">
+                        	通知消息
+                            <ul class="actions">
+                                <li>
+                                    <a href="" title="清除所有通知消息" data-ng-click="hctrl.clearNotification($event)">
+                                        <i class="zmdi zmdi-check-all"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lv-body">
+                            <a class="lv-item" ng-href="" ng-repeat="w in hctrl.messageResult.data">
+                                <div class="media">
+                                    <div class="pull-left">
+                                        <img class="lv-img-sm" ng-src="../resources/img/profile-pics/{{ w.img }}" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">{{ w.user }} <small class="pull-right">{{w.time}}</small></div>
+                                        <small class="lv-small">{{ w.msg }}</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <a class="lv-footer" href="">查看所有</a>
+                    </div>
+
+                </div>
+            </li>
+            <li class="hidden-xs" data-target="chat" data-toggle-sidebar="" data-model-right="mactrl.sidebarToggle.right" data-ng-class="{ 'open': mactrl.sidebarToggle.right === true }">
+                <a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>
+            </li>
+            <li class="dropdown" uib-dropdown="">
+                <a uib-dropdown-toggle="" href="">
+                    <i class="tm-icon zmdi zmdi-more-vert"></i>
+                </a>
+                <ul class="dropdown-menu dm-icon pull-right">
+                    <li class="skin-switch hidden-xs">
+                        <span ng-repeat="w in mactrl.skinList | limitTo : 6" class="ss-skin bgm-{{ w }}" data-ng-click="mactrl.skinSwitch(w)"></span>
+                    </li>
+                    <li class="divider hidden-xs"></li>
+                    <li class="hidden-xs">
+                        <a data-ng-click="hctrl.fullScreen()" href=""><i class="zmdi zmdi-fullscreen"></i> 切换全屏</a>
+                    </li>
+                    <li>
+                        <a data-ng-click="hctrl.clearLocalStorage()" href=""><i class="zmdi zmdi-delete"></i> 清除缓存</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<!-- 搜索面板 -->
+<div id="top-search-wrap">
+    <div class="tsw-inner">
+        <i id="top-search-close" class="zmdi zmdi-arrow-left" data-ng-click="hctrl.closeSearch()"></i>
+        <input type="text" />
+    </div>
+</div>

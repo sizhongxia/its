@@ -76,7 +76,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from xt_resource
+    from bs_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,27 +87,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from xt_resource
+    from bs_resource
     where res_id = #{resId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from xt_resource
+    delete from bs_resource
     where res_id = #{resId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.dm.stu.domain.ResourceExample">
-    delete from xt_resource
+    delete from bs_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.dm.stu.domain.Resource">
-    insert into xt_resource (res_id, res_filename, res_size, 
+    insert into bs_resource (res_id, res_filename, res_size, 
       res_path, res_upload_time)
     values (#{resId,jdbcType=VARCHAR}, #{resFilename,jdbcType=VARCHAR}, #{resSize,jdbcType=BIGINT}, 
       #{resPath,jdbcType=VARCHAR}, #{resUploadTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.dm.stu.domain.Resource">
-    insert into xt_resource
+    insert into bs_resource
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="resId != null">
         res_id,
@@ -144,13 +144,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.dm.stu.domain.ResourceExample" resultType="java.lang.Long">
-    select count(*) from xt_resource
+    select count(*) from bs_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update xt_resource
+    update bs_resource
     <set>
       <if test="record.resId != null">
         res_id = #{record.resId,jdbcType=VARCHAR},
@@ -173,7 +173,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update xt_resource
+    update bs_resource
     set res_id = #{record.resId,jdbcType=VARCHAR},
       res_filename = #{record.resFilename,jdbcType=VARCHAR},
       res_size = #{record.resSize,jdbcType=BIGINT},
@@ -184,7 +184,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.dm.stu.domain.Resource">
-    update xt_resource
+    update bs_resource
     <set>
       <if test="resFilename != null">
         res_filename = #{resFilename,jdbcType=VARCHAR},
@@ -202,7 +202,7 @@
     where res_id = #{resId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dm.stu.domain.Resource">
-    update xt_resource
+    update bs_resource
     set res_filename = #{resFilename,jdbcType=VARCHAR},
       res_size = #{resSize,jdbcType=BIGINT},
       res_path = #{resPath,jdbcType=VARCHAR},

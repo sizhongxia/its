@@ -15,6 +15,10 @@ public class User {
 
     private Boolean accountEnabled;
 
+    private String weixinOpenId;
+
+    private String qqOpenId;
+
     private Date createTime;
 
     public String getUserId() {
@@ -63,6 +67,22 @@ public class User {
 
     public void setAccountEnabled(Boolean accountEnabled) {
         this.accountEnabled = accountEnabled;
+    }
+
+    public String getWeixinOpenId() {
+        return weixinOpenId;
+    }
+
+    public void setWeixinOpenId(String weixinOpenId) {
+        this.weixinOpenId = weixinOpenId == null ? null : weixinOpenId.trim();
+    }
+
+    public String getQqOpenId() {
+        return qqOpenId;
+    }
+
+    public void setQqOpenId(String qqOpenId) {
+        this.qqOpenId = qqOpenId == null ? null : qqOpenId.trim();
     }
 
     public Date getCreateTime() {

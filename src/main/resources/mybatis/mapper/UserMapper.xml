@@ -8,6 +8,8 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="account_locked" jdbcType="BIT" property="accountLocked" />
     <result column="account_enabled" jdbcType="BIT" property="accountEnabled" />
+    <result column="weixin_open_id" jdbcType="VARCHAR" property="weixinOpenId" />
+    <result column="qq_open_id" jdbcType="VARCHAR" property="qqOpenId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, nickname, phone_number, password, account_locked, account_enabled, create_time
+    user_id, nickname, phone_number, password, account_locked, account_enabled, weixin_open_id, 
+    qq_open_id, create_time
   </sql>
   <select id="selectByExample" parameterType="com.dm.stu.domain.UserExample" resultMap="BaseResultMap">
     select
@@ -105,10 +108,12 @@
   <insert id="insert" parameterType="com.dm.stu.domain.User">
     insert into xt_user (user_id, nickname, phone_number, 
       password, account_locked, account_enabled, 
-      create_time)
+      weixin_open_id, qq_open_id, create_time
+      )
     values (#{userId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{accountLocked,jdbcType=BIT}, #{accountEnabled,jdbcType=BIT}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{weixinOpenId,jdbcType=VARCHAR}, #{qqOpenId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dm.stu.domain.User">
     insert into xt_user
@@ -130,6 +135,12 @@
       </if>
       <if test="accountEnabled != null">
         account_enabled,
+      </if>
+      <if test="weixinOpenId != null">
+        weixin_open_id,
+      </if>
+      <if test="qqOpenId != null">
+        qq_open_id,
       </if>
       <if test="createTime != null">
         create_time,
@@ -153,6 +164,12 @@
       </if>
       <if test="accountEnabled != null">
         #{accountEnabled,jdbcType=BIT},
+      </if>
+      <if test="weixinOpenId != null">
+        #{weixinOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqOpenId != null">
+        #{qqOpenId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -186,6 +203,12 @@
       <if test="record.accountEnabled != null">
         account_enabled = #{record.accountEnabled,jdbcType=BIT},
       </if>
+      <if test="record.weixinOpenId != null">
+        weixin_open_id = #{record.weixinOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqOpenId != null">
+        qq_open_id = #{record.qqOpenId,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -202,6 +225,8 @@
       password = #{record.password,jdbcType=VARCHAR},
       account_locked = #{record.accountLocked,jdbcType=BIT},
       account_enabled = #{record.accountEnabled,jdbcType=BIT},
+      weixin_open_id = #{record.weixinOpenId,jdbcType=VARCHAR},
+      qq_open_id = #{record.qqOpenId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -225,6 +250,12 @@
       <if test="accountEnabled != null">
         account_enabled = #{accountEnabled,jdbcType=BIT},
       </if>
+      <if test="weixinOpenId != null">
+        weixin_open_id = #{weixinOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqOpenId != null">
+        qq_open_id = #{qqOpenId,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -238,6 +269,8 @@
       password = #{password,jdbcType=VARCHAR},
       account_locked = #{accountLocked,jdbcType=BIT},
       account_enabled = #{accountEnabled,jdbcType=BIT},
+      weixin_open_id = #{weixinOpenId,jdbcType=VARCHAR},
+      qq_open_id = #{qqOpenId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>

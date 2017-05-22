@@ -1,0 +1,38 @@
+<div class="sidebar-inner c-overflow">    
+    <div class="profile-menu">
+        <a href="" toggle-submenu="">
+            <div class="profile-pic">
+                <img th:src="@{../resources/img/profile-pics/1.jpg}" alt=""/>
+            </div>
+            <div class="profile-info">个人信息 <i class="zmdi zmdi-caret-down"></i></div>
+        </a>
+
+        <ul class="main-menu">
+            <li>
+                <a data-ui-sref="pages.profile.profile-about" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i> 个人中心</a>
+            </li>
+            <li>
+                <a href=""><i class="zmdi zmdi-time-restore"></i> 安全退出</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu">
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="main" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home"></i> 主面板</a>
+        </li>
+        
+        <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('system') }">
+            <a href="" toggle-submenu=""><i class="zmdi zmdi-view-compact"></i> 系统权限</a>
+            <ul>
+                <li><a data-ui-sref-active="active" data-ui-sref="system.role" data-ng-click="mactrl.sidebarStat($event)">角色管理</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="system.permission-group" data-ng-click="mactrl.sidebarStat($event)">权限组</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="system.permission-wd" data-ng-click="mactrl.sidebarStat($event)">权限字</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="system.menu" data-ng-click="mactrl.sidebarStat($event)">菜单项</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    
+    
+</div>

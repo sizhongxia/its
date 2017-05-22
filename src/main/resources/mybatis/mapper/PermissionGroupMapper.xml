@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dm.stu.dao.PermissionGroupMapper">
+  <resultMap id="BaseResultMap" type="com.dm.stu.domain.PermissionGroup">
+    <id column="permission_group_id" jdbcType="VARCHAR" property="permissionGroupId" />
+    <result column="permission_group_name" jdbcType="VARCHAR" property="permissionGroupName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    permission_group_id, permission_group_name
+  </sql>
+  <select id="selectByExample" parameterType="com.dm.stu.domain.PermissionGroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from xt_permission_group
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xt_permission_group
+    where permission_group_id = #{permissionGroupId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from xt_permission_group
+    where permission_group_id = #{permissionGroupId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dm.stu.domain.PermissionGroupExample">
+    delete from xt_permission_group
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dm.stu.domain.PermissionGroup">
+    insert into xt_permission_group (permission_group_id, permission_group_name
+      )
+    values (#{permissionGroupId,jdbcType=VARCHAR}, #{permissionGroupName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dm.stu.domain.PermissionGroup">
+    insert into xt_permission_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionGroupId != null">
+        permission_group_id,
+      </if>
+      <if test="permissionGroupName != null">
+        permission_group_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionGroupId != null">
+        #{permissionGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionGroupName != null">
+        #{permissionGroupName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dm.stu.domain.PermissionGroupExample" resultType="java.lang.Long">
+    select count(*) from xt_permission_group
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update xt_permission_group
+    <set>
+      <if test="record.permissionGroupId != null">
+        permission_group_id = #{record.permissionGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.permissionGroupName != null">
+        permission_group_name = #{record.permissionGroupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update xt_permission_group
+    set permission_group_id = #{record.permissionGroupId,jdbcType=VARCHAR},
+      permission_group_name = #{record.permissionGroupName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dm.stu.domain.PermissionGroup">
+    update xt_permission_group
+    <set>
+      <if test="permissionGroupName != null">
+        permission_group_name = #{permissionGroupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permission_group_id = #{permissionGroupId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dm.stu.domain.PermissionGroup">
+    update xt_permission_group
+    set permission_group_name = #{permissionGroupName,jdbcType=VARCHAR}
+    where permission_group_id = #{permissionGroupId,jdbcType=VARCHAR}
+  </update>
+</mapper>

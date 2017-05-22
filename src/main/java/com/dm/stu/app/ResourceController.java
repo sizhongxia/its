@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dm.stu.model.MapResult;
+import com.dm.stu.model.ResponseData;
 
 @Controller
-@RequestMapping("r.f")
-public class ResourceController implements Serializable{
+@RequestMapping("file")
+public class ResourceController implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	final Logger logger = LoggerFactory.getLogger(ResourceController.class);
 
 	@ResponseBody
 	@PostMapping("upload")
-	public MapResult upload(@RequestParam("file") MultipartFile file) {
+	public ResponseData upload(@RequestParam("file") MultipartFile file) {
 		if (file.isEmpty()) {
-			return new MapResult(1, "未选择文件");
+			return new ResponseData(1, "未选择文件");
 		}
 		String fileOriginalName = file.getOriginalFilename();
 		logger.info(fileOriginalName);
@@ -35,7 +35,7 @@ public class ResourceController implements Serializable{
 		String suffixName = fileOriginalName.substring(fileOriginalName.lastIndexOf("."));
 		logger.info(suffixName);
 
-		return new MapResult(0, "上传成功", null);
+		return new ResponseData(0, "上传成功", null);
 	}
 
 }

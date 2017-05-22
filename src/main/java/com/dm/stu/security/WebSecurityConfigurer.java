@@ -1,7 +1,5 @@
 package com.dm.stu.security;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +16,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	DataSource dataSource;
-
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/index", "/test", "/main", "/resources/**", "/webjars/**");
+		web.ignoring().antMatchers(
+			"/favicon.ico",
+			"/index", 
+			"/login", 
+			"/resources/**", 
+			"/webjars/**", 
+			"/template/**", 
+			"/img/**", 
+			"/zx.*/**",
+			"/tx.*/**"
+		);
 	}
 
 	@Override
