@@ -1,9 +1,9 @@
 package com.dm.stu.model;
 
 public class ResponseData {
-	private int status = 0;
-	private String msg = "";
-	private Object data = null;
+	private int status;
+	private String msg;
+	private Object data;
 
 	public int getStatus() {
 		return status;
@@ -30,7 +30,7 @@ public class ResponseData {
 	}
 
 	public ResponseData() {
-		super();
+		this.status = 0;
 	}
 
 	public ResponseData(int status, String msg) {

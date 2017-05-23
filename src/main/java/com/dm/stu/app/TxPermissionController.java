@@ -1,6 +1,9 @@
 package com.dm.stu.app;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ import com.dm.stu.domain.Permission;
 import com.dm.stu.model.ResponseData;
 import com.dm.stu.service.TxJurisdictionService;
 import com.dm.stu.util.PublicUtil;
+import com.dm.stu.util.SecurityUtil;
 
 @RestController
 @RequestMapping("tx.permission")
@@ -24,22 +28,31 @@ public class TxPermissionController {
 	@GetMapping("get-by-id")
 	public ResponseData getById(String permissionId) {
 		if (PublicUtil.isEmpty(permissionId)) {
-			return new ResponseData(10001, "无效的参数");
+			return new ResponseData(10001, "无效的表单参数");
 		}
-		Permission permission = txJurisdictionService.getPermissionById(permissionId);
-		if (permission == null) {
-			return new ResponseData(10002, "无效的权限字ID");
+		// 解密
+		permissionId = SecurityUtil.AESDecrypt(permissionId);
+		if (permissionId == null) {
+			return new ResponseData(10002, "无效的参数");
 		}
-		return new ResponseData(permission);
+		Permission p = txJurisdictionService.getPermissionById(permissionId);
+		if (p == null) {
+			return new ResponseData(10003, "未找到数据，记录可能已被删除");
+		}
+		return new ResponseData(transform(p));
 	}
 
 	@GetMapping("get-all")
 	public ResponseData getAll() {
 		List<Permission> permissions = txJurisdictionService.getAllPermissions();
+		List<Map<?, ?>> list = new ArrayList<>();
 		if (PublicUtil.isEmpty(permissions)) {
-			return new ResponseData(10001, "无权限字数据");
+			return new ResponseData(list);
 		}
-		return new ResponseData(permissions);
+		for (Permission p : permissions) {
+			list.add(transform(p));
+		}
+		return new ResponseData(list);
 	}
 
 	@PostMapping("save")
@@ -62,7 +75,7 @@ public class TxPermissionController {
 		}
 		permission.setPermissionId(PublicUtil.id());
 		txJurisdictionService.save(permission);
-		return new ResponseData(permission);
+		return new ResponseData(transform(permission));
 	}
 
 	@PostMapping("update")
@@ -70,8 +83,14 @@ public class TxPermissionController {
 		if (permission == null) {
 			return new ResponseData(10001, "无效的参数");
 		}
-		if (PublicUtil.isEmpty(permission.getPermissionId())) {
-			return new ResponseData(10002, "无效的表单数据");
+		String permissionId = permission.getPermissionId();
+		if (PublicUtil.isEmpty(permissionId)) {
+			return new ResponseData(10002, "无效的表单参数");
+		}
+		// 解密
+		permissionId = SecurityUtil.AESDecrypt(permissionId);
+		if (permissionId == null) {
+			return new ResponseData(10003, "无效的表单参数");
 		}
 		if (PublicUtil.isEmpty(permission.getPermissionName())) {
 			return new ResponseData(10003, "请输入权限字名称");
@@ -82,31 +101,49 @@ public class TxPermissionController {
 		if (PublicUtil.isEmpty(permission.getPermissionDescript())) {
 			return new ResponseData(10004, "请输入权限字描述");
 		}
-		Permission u_permission = txJurisdictionService.getPermissionById(permission.getPermissionId());
+		Permission u_permission = txJurisdictionService.getPermissionById(permissionId);
 		if (u_permission == null) {
 			return new ResponseData(10005, "无效的权限字ID");
 		}
 		Permission s_permission = txJurisdictionService.getPermissionByCode(permission.getPermissionCode());
 		if (s_permission != null && !s_permission.getPermissionId().equals(u_permission.getPermissionId())) {
-			return new ResponseData(10006, "权限字名称已存在");
+			return new ResponseData(10006, "权限字编码已存在");
 		}
 		u_permission.setPermissionName(permission.getPermissionName());
 		u_permission.setPermissionCode(permission.getPermissionCode());
 		u_permission.setPermissionDescript(permission.getPermissionDescript());
 		txJurisdictionService.update(u_permission);
-		return new ResponseData(u_permission);
+		return new ResponseData(transform(u_permission));
 	}
 
 	@PostMapping("delete")
-	public ResponseData delete(String permissionId) {
-		if (PublicUtil.isEmpty(permissionId)) {
-			return new ResponseData(10001, "无效的权限字ID");
-		}
-		Permission permission = txJurisdictionService.getPermissionById(permissionId);
+	public ResponseData delete(@RequestBody Permission permission) {
 		if (permission == null) {
-			return new ResponseData(10002, "无效的权限字ID");
+			return new ResponseData(10001, "无效的参数");
 		}
-		return new ResponseData(permission);
+		String permissionId = permission.getPermissionId();
+		if (PublicUtil.isEmpty(permissionId)) {
+			return new ResponseData(10002, "无效的表单参数");
+		}
+		// 解密
+		permissionId = SecurityUtil.AESDecrypt(permissionId);
+		if (permissionId == null) {
+			return new ResponseData(10003, "无效的表单参数");
+		}
+		Permission spermission = txJurisdictionService.getPermissionById(permissionId);
+		if (spermission == null) {
+			return new ResponseData(10004, "未找到数据，记录可能已被删除");
+		}
+		txJurisdictionService.deletePermission(permissionId);
+		return new ResponseData();
 	}
 
+	private Map<String, Object> transform(Permission p) {
+		Map<String, Object> obj = new HashMap<>();
+		obj.put("permissionId", SecurityUtil.AESEncrypt(p.getPermissionId()));
+		obj.put("permissionName", p.getPermissionName());
+		obj.put("permissionCode", p.getPermissionCode());
+		obj.put("permissionDescript", p.getPermissionDescript());
+		return obj;
+	}
 }

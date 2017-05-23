@@ -51,6 +51,10 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             url: '/system-permission-wd-create',
             templateUrl: _url_prefix + 'system-permission-wd-create'
         })
+        .state('system.permission-wd-change', {
+            url: '/system-permission-wd-change/:permissionId',
+            templateUrl: _url_prefix + 'system-permission-wd-change'
+        })
         .state('system.menu', {
             url: '/system-menu',
             templateUrl: _url_prefix + 'system-menu'

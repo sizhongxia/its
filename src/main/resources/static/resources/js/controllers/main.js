@@ -3,10 +3,10 @@ materialAdmin
     // 后台主框架
     // =========================================================================
 
-    .controller('materialadminCtrl', function($timeout, $state, $scope, growlService){
+    .controller('materialadminCtrl', function($timeout, $state, $scope, swalService){
     	var _this = this;
         // 欢迎消息
-        // growlService.growl('欢迎使用后台管理系统', 'inverse')
+        // swalService.growl('欢迎使用后台管理系统2')
         
         
         // 检测是否是移动端浏览器

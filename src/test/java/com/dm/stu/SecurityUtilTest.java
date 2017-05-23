@@ -18,12 +18,13 @@ public class SecurityUtilTest {
 
 	@Test
 	public void TestEncode() {
-		System.out.println(SecurityUtil.encode(SecurityUtil.sha1("123456")));
+		System.out.println(SecurityUtil.AESEncrypt(SecurityUtil.sha1("123456")));
 	}
 
 	@Test
 	public void TestDecode() {
-		System.out.println(SecurityUtil.decode("N2M0YThkMDljYTM3NjJhZjYxZTU5NTIwOTQzZGMyNjQ5NGY4OTQxYg=="));
+		System.out.println(SecurityUtil.AESEncrypt("Mg=="));
+		System.out.println(SecurityUtil.AESDecrypt("fkvmgc0dzBerGJTsi3QU0A=="));
 	}
 
 }

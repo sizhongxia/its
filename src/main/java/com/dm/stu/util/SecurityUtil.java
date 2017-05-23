@@ -1,5 +1,10 @@
 package com.dm.stu.util;
 
+import java.security.Key;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -32,31 +37,47 @@ public class SecurityUtil {
 	}
 
 	/***
-	 * 对称Base64加密
+	 * 生成AES-KEY
 	 * 
-	 * @param str
 	 * @return
 	 */
-	public static String encode(String str) {
-		Base64 base64 = new Base64();
-		try {
-			return base64.encodeToString(str.getBytes("UTF-8"));
-		} catch (Exception e) {
-			return null;
-		}
+	private static Key getAESKey() {
+		byte[] bytes = Base64.decodeBase64(Base64.encodeBase64("DTFQ6nEPmWuJvpr2".getBytes()));
+		return new SecretKeySpec(bytes, "AES");
 	}
 
 	/***
-	 * 对称Base64解密
+	 * 对称AES加密
 	 * 
 	 * @param str
 	 * @return
 	 */
-	public static String decode(String str) {
+	public static String AESEncrypt(String str) {
 		try {
-			return new String(Base64.decodeBase64(str));
+			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+			cipher.init(Cipher.ENCRYPT_MODE, getAESKey());
+			byte[] result = cipher.doFinal(str.getBytes());
+			return Base64.encodeBase64String(result);
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
 		}
+		return null;
+	}
+
+	/***
+	 * 对称AES解密
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String AESDecrypt(String str) {
+		try {
+			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+			cipher.init(Cipher.DECRYPT_MODE, getAESKey());
+			return new String(cipher.doFinal(Base64.decodeBase64(str.getBytes())));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

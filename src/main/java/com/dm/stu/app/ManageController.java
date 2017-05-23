@@ -70,6 +70,11 @@ public class ManageController {
 		return PATH_PREFIX + "system/permission-wd-create";
 	}
 
+	@GetMapping("system-permission-wd-change")
+	public String systemPermissionWdChange() {
+		return PATH_PREFIX + "system/permission-wd-change";
+	}
+
 	@GetMapping("system-permission-group")
 	public String systemPermissionGroup() {
 		return PATH_PREFIX + "system/permission-group";
