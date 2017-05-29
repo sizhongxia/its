@@ -91,6 +91,19 @@ public interface TxJurisdictionService {
 	List<Menu> getAllMenus();
 
 	/**
+	 * 通过父级ID获取所有子集菜单信息
+	 * 
+	 * @param menuId
+	 * @return
+	 */
+	List<Menu> getMenuByParentId(String menuPid);
+
+	/**
+	 * 获取所有父级菜单信息
+	 */
+	List<Menu> getParentMenus();
+
+	/**
 	 * 保存权限组
 	 * 
 	 * @param permissionGroup

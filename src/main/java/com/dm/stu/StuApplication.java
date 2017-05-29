@@ -16,13 +16,7 @@ public class StuApplication {
 //	@Bean
 //	public EmbeddedServletContainerCustomizer containerCustomizer() {
 //		return (container -> {
-//			container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, ERRPAGE_PREFIX + "400.html"),
-//					new ErrorPage(HttpStatus.UNAUTHORIZED, ERRPAGE_PREFIX + "401.html"),
-//					new ErrorPage(HttpStatus.FORBIDDEN, ERRPAGE_PREFIX + "403.html"),
-//					new ErrorPage(HttpStatus.NOT_FOUND, ERRPAGE_PREFIX + "404.html"),
-//					new ErrorPage(HttpStatus.METHOD_NOT_ALLOWED, ERRPAGE_PREFIX + "405.html"),
-//					new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, ERRPAGE_PREFIX + "500.html"),
-//					new ErrorPage(HttpStatus.BAD_GATEWAY, ERRPAGE_PREFIX + "502.html"));
+//			container.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, ERRPAGE_PREFIX + "403.html"));
 //		});
 //	}
 

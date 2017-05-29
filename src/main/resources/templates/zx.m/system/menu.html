@@ -1,204 +1,50 @@
-<div class="container">
-    <div class="block-header">
-        <h2>Form Components</h2>
-
-        <ul class="actions">
-            <li>
-                <a href="">
-                    <i class="zmdi zmdi-trending-up"></i>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="zmdi zmdi-check-all"></i>
-                </a>
-            </li>
-            <li class="dropdown" uib-dropdown="">
-                <a href="" uib-dropdown-toggle="">
-                    <i class="zmdi zmdi-more-vert"></i>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                        <a href="">Refresh</a>
-                    </li>
-                    <li>
-                        <a href="">Manage Widgets</a>
-                    </li>
-                    <li>
-                        <a href="">Widgets Settings</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-    </div>
-
+<div class="container" data-ng-controller="menuCtrl">
     <div class="card">
         <div class="card-header">
-            <h2>Input Groups <small>Extend form controls by adding text or buttons before, after, or on both sides of any text-based inputs.</small></h2>
+            <h2>菜单<small>系统菜单项</small></h2>
+	        <ul class="actions m-t-20 m-r-20">
+	            <li class="dropdown" uib-dropdown="">
+	                <a href="" uib-dropdown-toggle="">
+	                    <i class="zmdi zmdi-more-vert"></i>
+	                </a>
+	                <ul class="dropdown-menu dropdown-menu-right">
+	                    <li>
+	                        <a href="" ng-click="open_create_window()"><i class="zmdi zmdi-plus"></i> 新增菜单</a>
+	                    </li>
+	                </ul>
+	            </li>
+	        </ul>
         </div>
-
-        <div class="card-body card-padding">
-            <p class="c-black f-500 m-b-5">Basic Example</p>
-            <small>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</small>
-
-            <br/><br/>
-
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-                        <div class="fg-line">
-                                <input type="text" class="form-control" placeholder="Full Name"/>
-                        </div>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-local-phone"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Contact Number"/>
-                        </div>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Email Address"/>
-                        </div>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Home Address"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Landscape"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-landscape"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Weather"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-sun"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Flight"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-airplane"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Location"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-my-location"></i></span>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-arrow-missed"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Internet"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-money"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Notifications"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-plus-circle-o"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-mail-send"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Layers"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-layers"></i></span>
-                    </div>
-
-                    <br/>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="zmdi zmdi-portable-wifi"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control" placeholder="Messages"/>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-dialpad"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <br/><br/>
-            <p class="c-black f-500 m-b-5 m-t-20">Floating Labels</p>
-            <small>Basic example for input groups with floating labels</small>
-
-            <br/>
-            <br/>
-            <br/>
-
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="input-group fg-float">
-                        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control"/>
-                            <label class="fg-label">Full Name</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="input-group fg-float">
-                        <div class="fg-line">
-                            <input type="text" class="form-control"/>
-                            <label class="fg-label">Location</label>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-my-location"></i></span>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="input-group fg-float">
-                        <span class="input-group-addon"><i class="zmdi zmdi-mail-send"></i></span>
-                        <div class="fg-line">
-                            <input type="text" class="form-control"/>
-                            <label class="fg-label">Layers</label>
-                        </div>
-                        <span class="input-group-addon last"><i class="zmdi zmdi-layers "></i></span>
-                    </div>
-                </div>
-            </div>
-		</div>
+        <div class="card-body">
+        	<div class="row m-l-10 m-r-10">
+        		<div class="col-sm-12 operation-wrap">
+        			<a class="btn btn-success btn-icon-text btn-sm" ng-click="open_create_window()"><i class="zmdi zmdi-plus"></i> 新增菜单</a>
+        		</div>
+        	</div>
+        	<div class="table-responsive">
+	            <table class="table table-hover" tt-table="" tt-params="menuTreeTable">
+			        <thead>
+					    <tr>
+					        <th ng-repeat="th in table.headers"><span ng-bind="th"></span></th>
+					    </tr>
+					</thead>
+			        <tbody></tbody>
+			    </table>
+	        </div>
+        </div>
     </div>
 </div>
+<script type="text/ng-template" id="menu_tree_node.html">
+    <tr tt-node="" is-branch="node.type == 'parent'">
+        <td><span ng-bind="node.menuName"></span></td>
+        <td><i style="font-size: 18px" ng-class="node.menuIcon"></i></td>
+        <td><span ng-bind="node.menuPrefix"></span></td>
+        <td><span ng-bind="node.menuUiSref"></span></td>
+        <td><span ng-bind="node.menuSerialNumber"></span></td>
+        <td><span ng-bind="node.menuStatus ? '启用':'未启用'"></span></td>
+        <td>
+        	<button type="button" class="btn btn-link btn-sm" ng-click="open_change_window(node.menuId)">编辑</button>
+       		<button type="button" class="btn btn-link btn-sm" ng-click="del_it(node.menuId, node.menuName)">删除</button>
+        </td>
+    </tr>
+</script>

@@ -1,12 +1,12 @@
 package com.dm.stu.app;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("zx.m")
-// @PreAuthorize("hasRole('user')")
 public class ManageController {
 
 	private final String PATH_PREFIX = "zx.m/";
@@ -14,6 +14,11 @@ public class ManageController {
 	// ------------------------------
 	// 主页面
 	// ------------------------------
+	@RequiresAuthentication
+	// @RequiresPermissions(value = "permission")
+	// @RequiresRoles(value = "role")
+	// @RequiresUser
+	// @RequiresGuest
 	@GetMapping("index")
 	public String index() {
 		return PATH_PREFIX + "index";
@@ -57,31 +62,25 @@ public class ManageController {
 	// ------------------------------
 	@GetMapping("system-role")
 	public String systemRole() {
+		// 系统角色
 		return PATH_PREFIX + "system/role";
 	}
 
-	@GetMapping("system-permission-wd")
-	public String systemPermissionWd() {
-		return PATH_PREFIX + "system/permission-wd";
-	}
-
-	@GetMapping("system-permission-wd-create")
-	public String systemPermissionWdCreate() {
-		return PATH_PREFIX + "system/permission-wd-create";
-	}
-
-	@GetMapping("system-permission-wd-change")
-	public String systemPermissionWdChange() {
-		return PATH_PREFIX + "system/permission-wd-change";
+	@GetMapping("system-permission-dictionary")
+	public String systemPermissionDictionary() {
+		// 权限字典
+		return PATH_PREFIX + "system/permission-dictionary";
 	}
 
 	@GetMapping("system-permission-group")
 	public String systemPermissionGroup() {
+		// 权限组
 		return PATH_PREFIX + "system/permission-group";
 	}
 
 	@GetMapping("system-menu")
 	public String systemMenu() {
+		// 系统菜单
 		return PATH_PREFIX + "system/menu";
 	}
 }

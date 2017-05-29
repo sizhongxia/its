@@ -1,0 +1,57 @@
+<div class="container" data-ng-controller="permissionCtrl as pctrl">
+    <div class="card">
+        <div class="card-header">
+            <h2>权限字<small>最小粒度的权限控制</small></h2>
+	        <ul class="actions m-t-20">
+	            <li class="dropdown" uib-dropdown="">
+	                <a href="" uib-dropdown-toggle="">
+	                    <i class="zmdi zmdi-more-vert"></i>
+	                </a>
+	                <ul class="dropdown-menu dropdown-menu-right">
+	                    <li>
+	                        <a href="" ng-click="pctrl.open_create_window()">新增权限字</a>
+	                    </li>
+	                </ul>
+	            </li>
+	        </ul>
+        </div>
+        <div class="card-body">
+        	<div class="row m-10">
+        		<div class="col-sm-12 operation-wrap">
+        			<a class="btn btn-success btn-icon-text btn-sm" ng-click="pctrl.open_create_window()"><i class="zmdi zmdi-plus"></i> 新增权限字</a>
+        		</div>
+        	</div>
+        	<div class="table-responsive">
+	            <table class="table table-hover">
+	            	<thead>
+					    <tr>
+					        <th ng-repeat="th in pctrl.table.headers"><span ng-bind="th"></span></th>
+					    </tr>
+					</thead>
+	                <tbody>
+	                    <tr ng-repeat="w in pctrl.table.datas">
+	                        <td><span ng-bind="$index+1"></span></td>
+	                        <td><span ng-bind="w.permissionName"></span></td>
+	                        <td><span ng-bind="w.permissionCode"></span></td>
+	                        <td><span ng-bind="w.permissionDescript"></span></td>
+	                        <td>
+						        <button type="button" class="btn btn-link btn-sm" ng-click="pctrl.open_change_window(w.permissionId)">编辑</button>
+						        <button type="button" class="btn btn-link btn-sm" ng-click="pctrl.del_it(w.permissionId, w.permissionName)">删除</button>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	                <tfoot>
+	                	<tr>
+	                		<td colspan="{{pctrl.table.headers.length}}">
+						        <uib-pagination force-ellipses="true" items-per-page="pctrl.table.perPage" total-items="pctrl.table.totalItems" ng-model="pctrl.table.currentPage" ng-change="pctrl.changePage()" boundary-links="false" direction-links="true" rotate="true" max-size="5" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+              					<div class="btn-group pull-right m-t-25">
+				                    <button ng-repeat="p in pctrl.table.perPages" ng-click="pctrl.changePerPage(p)" type="button" class="btn btn-default" ng-class="{'active': pctrl.table.perPage === p}" ng-bind="p"></button>
+				                </div>
+	                		</td>
+	                	</tr>
+	                </tfoot>
+	            </table>
+	        </div>
+        </div>
+    </div>
+</div>

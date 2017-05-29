@@ -36,28 +36,19 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             templateUrl: _url_prefix + 'common'
         })
         .state('system.role', {
-            url: '/system-role',
+            url: '/role',
             templateUrl: _url_prefix + 'system-role'
         })
         .state('system.permission-group', {
-            url: '/system-permission-group',
+            url: '/permission-group',
             templateUrl: _url_prefix + 'system-permission-group'
         })
-        .state('system.permission-wd', {
-            url: '/system-permission-wd',
-            templateUrl: _url_prefix + 'system-permission-wd'
-        })
-        .state('system.permission-wd-create', {
-            url: '/system-permission-wd-create',
-            templateUrl: _url_prefix + 'system-permission-wd-create'
-        })
-        .state('system.permission-wd-change', {
-            url: '/system-permission-wd-change/:permissionId',
-            templateUrl: _url_prefix + 'system-permission-wd-change'
+        .state('system.permission-dictionary', {
+            url: '/permission-dictionary',
+            templateUrl: _url_prefix + 'system-permission-dictionary'
         })
         .state('system.menu', {
-            url: '/system-menu',
+            url: '/menu',
             templateUrl: _url_prefix + 'system-menu'
         })
-        
 });

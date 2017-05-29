@@ -31,6 +31,22 @@
 //	public void test() throws Exception {
 //		stringRedisTemplate.opsForValue().set("aaa", "111");
 //		Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+//		Thread.sleep(1000);
+//		stringRedisTemplate.delete("aaa");
+//	}
+//
+//	@Test
+//	public void testDelta() throws Exception {
+//		Long num = redisService.increment("aaaa", 1L);
+//		System.out.println(num);
+//		stringRedisTemplate.delete("aaaa");
+//	}
+//	
+//
+//	@Test
+//	public void testExpire() throws Exception {
+//		Long times = redisService.getExpire("aaaa");
+//		System.out.println(times);
 //	}
 //
 //	@Test
@@ -54,15 +70,15 @@
 //		}
 //		// Assert.assertEquals("aa", operations.get("com.neo.f").getUserName());
 //	}
-//	
+//
 //	@Test
 //	public void testRedisService() throws Exception {
-////		redisService.set("k1.0", "testvalue1");
-////		redisService.set("k1.1", "testvalue1", 10L);
-////		System.out.println(redisService.getString("k1.0"));
-////		System.out.println(redisService.hasKey("k1.1"));
+//		// redisService.set("k1.0", "testvalue1");
+//		// redisService.set("k1.1", "testvalue1", 10L);
+//		// System.out.println(redisService.getString("k1.0"));
+//		// System.out.println(redisService.hasKey("k1.1"));
 //		redisService.del("spring:session:sessions:a3127b72-5cb2-43df-8f6a-ae6f2f63899e");
 //		redisService.del("spring:session:sessions:expires:a3127b72-5cb2-43df-8f6a-ae6f2f63899e");
 //	}
-//	
+//
 //}

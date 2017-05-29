@@ -7,6 +7,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 
 /***
  * 安全加密相关工具类
@@ -23,7 +24,7 @@ public class SecurityUtil {
 	 * @return
 	 */
 	public static String md5(String str) {
-		return DigestUtils.md5Hex(str);
+		return new Md5Hash(str, "201705281241").toBase64();
 	}
 
 	/**

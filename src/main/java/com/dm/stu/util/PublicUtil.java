@@ -3,6 +3,8 @@ package com.dm.stu.util;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.util.StringUtils;
 
@@ -55,5 +57,62 @@ public class PublicUtil {
 			return true;
 		}
 		return list.isEmpty();
+	}
+
+	/**
+	 * 判断是否为数字(正负数都行)
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static boolean isNumeric(String str) {
+		Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+		Matcher isNum = pattern.matcher(str);
+		if (!isNum.matches()) {
+			return false;
+		}
+		return true;
+	}
+
+	/***
+	 * 转换成int
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static int toInteger(String number) {
+		if (isEmpty(number) || !isNumeric(number)) {
+			return 0;
+		}
+		return new Integer(number).intValue();
+	}
+
+	/***
+	 * 秒数转成时分秒格式
+	 * 
+	 * @param second
+	 * @return
+	 */
+	public static String toTextTime(long second) {
+		long h = second / 3600;
+		long m = (second - h * 3600) / 60;
+		long s = (second - h * 3600) % 60;
+		StringBuffer sb = new StringBuffer();
+		if (h > 0) {
+			return (h + 1) + "小时后";
+		}
+		if (m > 0) {
+			if (m + 1 == 60) {
+				return "1小时后";
+			}
+			return (m + 1) + "分钟后";
+		}
+		if (s > 0) {
+			if (s + 1 == 60) {
+				return "1分钟后";
+			}
+			return (s + 1) + "秒后";
+		}
+		return sb.toString();
 	}
 }

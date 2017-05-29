@@ -1,0 +1,72 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}菜单</h4>
+</div>
+<div class="modal-body">
+	<form role="form">
+		<div class="row">
+		   	<div class="col-sm-12 form-group m-b-0" data-ng-class="{'has-error': formError.menuName!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">父级菜单</label>
+			        <div class="select">
+				        <select ng-model="menu.menuPid" class="form-control" >
+				             <option value="">选择一个父级菜单（不选则为一级目录）</option>
+				             <option ng-repeat="menu in parentMenus" value="{{menu.menuId}}">{{menu.menuName}}</option>
+				        </select>
+				    </div>
+			    </div>
+			    <small class="help-block">&nbsp;{{ formError.menuName }}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0" data-ng-class="{'has-error': formError.menuName!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">菜单名称</label>
+			        <input type="text" ng-model="menu.menuName" class="input-sm form-control fg-input"/>
+			    </div>
+			    <small class="help-block">&nbsp;{{ formError.menuName }}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0" data-ng-class="{'has-error': formError.menuIcon!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">菜单图标  <i class="{{menu.menuIcon}}"></i> </label>
+			        <div class="select">
+				        <select ng-model="menu.menuIcon" class="form-control" >
+				             <option value="">选择一个菜单图标</option>
+				             <option ng-repeat="icon in icons" value="zmdi zmdi-{{icon}}">{{icon}}</option>
+				        </select>
+				    </div>
+			    </div>
+			    <small class="help-block">&nbsp;{{formError.menuIcon}}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0" data-ng-class="{'has-error': formError.menuPrefix!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">前缀地址</label>
+			        <input type="text" ng-model="menu.menuPrefix" class="input-sm form-control fg-input"/>
+			    </div>
+			    <small class="help-block">&nbsp;{{formError.menuPrefix}}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0" data-ng-class="{'has-error': formError.menuUiSref!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">访问地址</label>
+			        <input type="text" ng-model="menu.menuUiSref" class="input-sm form-control fg-input"/>
+			    </div>
+			    <small class="help-block">&nbsp;{{formError.menuUiSref}}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0" data-ng-class="{'has-error': formError.menuSerialNumber!==''}">
+			    <div class="fg-line">
+			        <label class="fg-label">排序序号</label>
+			        <input type="text" ng-model="menu.menuSerialNumber" data-input-mask="{mask: '000000'}" maxlength="6" autocomplete="off" class="input-sm form-control fg-input"/>
+			    </div>
+			    <small class="help-block">&nbsp;{{formError.menuSerialNumber}}</small>
+			</div>
+		   	<div class="col-sm-6 form-group m-b-0">
+		       	<div class="toggle-switch" data-ts-color="green">
+		           	<label for="ts2" class="ts-label" style="min-width:0">启用状态</label>
+		            <input id="ts2" ng-model="menu.menuStatus" type="checkbox" hidden="hidden"/>
+		            <label for="ts2" class="ts-helper"></label>
+		        </div>
+		 	</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+    <button type="button" ng-click="submit()" class="btn btn-primary btn-sm btn-icon-text m-t-10"><i class="zmdi zmdi-check-all"></i> {{title}}</button>
+    <button type="button" ng-click="close()" class="btn btn-danger btn-sm btn-icon-text m-t-10"><i class="zmdi zmdi-close"></i> 取消</button>
+</div>

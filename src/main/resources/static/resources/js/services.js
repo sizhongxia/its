@@ -38,7 +38,7 @@ materialAdmin
                     confirmButtonText: "关闭"
                 });
         	},
-    		// 提示警告弹框
+    		// 提示错误弹框
     		error : function(message) {
         		swal({
                     title: "提示",
@@ -75,23 +75,18 @@ materialAdmin
                 	typeof confirmCallback === 'function' && confirmCallback();
                 });
         	},
-        	// 右上角提示弹框
+        	// 右上角提示弹框 TYPE:[inverse, info, success, warning, danger]
         	growl : function(message, type) {
         		$.growl({
                     message: message
                 },{
                     type: type || 'inverse',
-                    allow_dismiss: false,
-                    label: 'Cancel',
-                    className: 'btn-xs btn-inverse',
-                    placement: {
-                        from: 'top',
-                        align: 'right'
-                    },
+            		z_index: 1068,
+            		allow_dismiss: true,
                     delay: 2500,
+                    className: 'btn-xs btn-inverse',
                     animate: {
-                        enter: 'animated bounceIn',
-                        exit: 'animated bounceOut'
+                        enter: 'animated bounceIn'
                     },
                     offset: {
                         x: 20,
@@ -101,7 +96,6 @@ materialAdmin
         	}
     	};
     })
-    
     
     // =========================================================================
     // 网络请求相关服务
@@ -125,7 +119,7 @@ materialAdmin
                  }).then(function (response) {
                 	if(response.data && response.data.status > 0) {
                       	console.info("GET:"+url+"#"+JSON.stringify(data), response);
-             			swalService.error(response.data.msg + " （错误代码：" + response.data.status + "）")
+             			swalService.growl(response.data.msg + " （错误代码：" + response.data.status + "）", "danger")
              		} else {
              			typeof callback == 'function' && callback(response.data)
              		}
@@ -139,7 +133,7 @@ materialAdmin
                  }).then(function (response) {
                 	if(response.data && response.data.status > 0) {
                       	console.info("POST:"+url+"#"+JSON.stringify(data), response);
-             			swalService.error(response.data.msg + " （错误代码：" + response.data.status + "）")
+             			swalService.growl(response.data.msg + " （错误代码：" + response.data.status + "）", "danger")
              		} else {
              			typeof callback == 'function' && callback(response.data)
              		}
@@ -164,12 +158,15 @@ materialAdmin
     // 系统权限相关服务
     // =========================================================================
 
-    .service('permissionService', ['httpService', 'swalService', function(httpService, swalService){
+    .service('permissionService', ['httpService', function(httpService){
     	var _url_prefix = "../tx.permission/";
     	return {
-    		// 获取所有权限字
-            getByAll : function(callback) {
-                httpService.get(_url_prefix + "get-all", {}, callback);
+    		// 分页获取权限字
+            getByPage : function(page, perPage, callback) {
+                httpService.get(_url_prefix + "get-by-page", {
+                	page: page || 1,
+                	perPage: perPage || 20
+                }, callback);
             },
     		// 通过ID获取权限字
     		getById : function(permissionId, callback) {
@@ -198,6 +195,57 @@ materialAdmin
             remove : function(permissionId, callback) {
             	httpService.post(_url_prefix + 'delete', {
             		permissionId: permissionId
+                }, callback);
+            }
+    	};
+    }])
+    
+    .service('menuService', ['httpService', function(httpService){
+    	var _url_prefix = "../tx.menu/";
+    	return {
+    		// 获取所有菜单
+            getAll : function(callback) {
+                httpService.get(_url_prefix + "get-all", {}, callback);
+            },
+    		// 获取所有父级菜单
+            getParentMenus : function(callback) {
+                httpService.get(_url_prefix + "get-parent-menus", {}, callback);
+            },
+    		// 通过ID获取菜单
+    		getById : function(menuId, callback) {
+                httpService.get(_url_prefix + "get-by-id", {
+                	menuId: menuId
+                }, callback);
+            },
+    		// 保存菜单
+            save : function(menu, callback) {
+            	httpService.post(_url_prefix + 'save', {
+            		menuPid: menu.menuPid,
+            		menuName: menu.menuName,
+            		menuSerialNumber: menu.menuSerialNumber,
+            		menuIcon: menu.menuIcon,
+            		menuPrefix: menu.menuPrefix,
+            		menuUiSref: menu.menuUiSref,
+            		menuStatus: menu.menuStatus
+                }, callback);
+            },
+    		// 修改菜单
+            update : function(menu, callback) {
+            	httpService.post(_url_prefix + 'update', {
+            		menuId: menu.menuId,
+            		menuPid: menu.menuPid,
+            		menuName: menu.menuName,
+            		menuSerialNumber: menu.menuSerialNumber,
+            		menuIcon: menu.menuIcon,
+            		menuPrefix: menu.menuPrefix,
+            		menuUiSref: menu.menuUiSref,
+            		menuStatus: menu.menuStatus
+                }, callback);
+            },
+    		// 删除菜单
+            remove : function(menuId, callback) {
+            	httpService.post(_url_prefix + 'delete', {
+            		menuId: menuId
                 }, callback);
             }
     	};

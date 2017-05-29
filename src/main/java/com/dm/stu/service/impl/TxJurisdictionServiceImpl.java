@@ -95,6 +95,25 @@ public class TxJurisdictionServiceImpl implements TxJurisdictionService {
 	}
 
 	@Override
+	public List<Menu> getMenuByParentId(String menuPid) {
+		MenuExample example = new MenuExample();
+		example.createCriteria().andMenuPidEqualTo(menuPid);
+		example.setOrderByClause("menu_serial_number asc, menu_name asc");
+		return menuMapper.selectByExample(example);
+	}
+
+	/**
+	 * 获取所有父级菜单信息
+	 */
+	@Override
+	public List<Menu> getParentMenus() {
+		MenuExample example = new MenuExample();
+		example.createCriteria().andMenuPidIsNull();
+		example.setOrderByClause("menu_serial_number asc, menu_name asc");
+		return menuMapper.selectByExample(example);
+	}
+
+	@Override
 	public void save(PermissionGroup permissionGroup) {
 		permissionGroupMapper.insert(permissionGroup);
 	}

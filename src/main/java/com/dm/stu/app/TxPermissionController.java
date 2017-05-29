@@ -17,6 +17,8 @@ import com.dm.stu.model.ResponseData;
 import com.dm.stu.service.TxJurisdictionService;
 import com.dm.stu.util.PublicUtil;
 import com.dm.stu.util.SecurityUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("tx.permission")
@@ -42,9 +44,20 @@ public class TxPermissionController {
 		return new ResponseData(transform(p));
 	}
 
-	@GetMapping("get-all")
-	public ResponseData getAll() {
+	@GetMapping("get-by-page")
+	public ResponseData getByPage(String page, String perPage) {
+		int ipage = PublicUtil.toInteger(page);
+		int iperPage = PublicUtil.toInteger(perPage);
+		if (ipage < 1) {
+			ipage = 1;
+		}
+		if (ipage < 1) {
+			ipage = 20;
+		}
+		PageHelper.startPage(ipage, iperPage);
 		List<Permission> permissions = txJurisdictionService.getAllPermissions();
+		PageInfo<Permission> pageInfo = new PageInfo<Permission>(permissions);
+		Map<String, Object> data = new HashMap<>();
 		List<Map<?, ?>> list = new ArrayList<>();
 		if (PublicUtil.isEmpty(permissions)) {
 			return new ResponseData(list);
@@ -52,7 +65,9 @@ public class TxPermissionController {
 		for (Permission p : permissions) {
 			list.add(transform(p));
 		}
-		return new ResponseData(list);
+		data.put("list", list);
+		data.put("totalItems", pageInfo.getTotal());
+		return new ResponseData(data);
 	}
 
 	@PostMapping("save")

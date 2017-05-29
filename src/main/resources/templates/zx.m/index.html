@@ -18,15 +18,18 @@
     <link th:href="@{../resources/vendors/components/bootstrap-sweetalert/lib/sweet-alert.css}" rel="stylesheet" />
     <link th:href="@{../resources/vendors/components/angular-loading-bar/src/loading-bar.css}" rel="stylesheet" />
     <link th:href="@{../resources/vendors/components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css}" rel="stylesheet" />
+    <link th:href="@{../resources/vendors/components/chosen/chosen.min.css}" rel="stylesheet" />
+	<link th:href="@{../resources/vendors/components/angular-treetable/example/style/jquery.treetable.css}" rel="stylesheet" />
+	<link th:href="@{../resources/vendors/components/angular-treetable/example/style/jquery.treetable.theme.default.css}" rel="stylesheet" />
 
     <!-- CSS -->
-    <link th:href="@{../resources/css/app.min.1.css}" rel="stylesheet" id="app-level" />
+    <link th:href="@{../resources/css/app.min.1.css}" rel="stylesheet" />
     <link th:href="@{../resources/css/app.min.2.css}" rel="stylesheet" />
     <link th:href="@{../resources/css/style.css}" rel="stylesheet" />
 
 </head>
 
-<body class="cOverflow" data-ng-class="{ 'sw-toggled': mactrl.layoutType === '1'}">
+<body data-ng-class="{ 'sw-toggled': mactrl.layoutType === '1'}">
 
     <data ui-view=""></data>
 
@@ -57,6 +60,10 @@
         <script th:src="@{../resources/vendors/components/jquery-placeholder/jquery.placeholder.min.js}"></script>
     <![endif]-->
 
+
+    <script th:src="@{../resources/vendors/components/angular-treetable/example/lib/jquery.treetable.js}"></script>
+	<script th:src="@{../resources/vendors/components/angular-treetable/dist/angular-treetable.min.js}"></script>
+    
     <!-- Using below vendors in order to avoid misloading on resolve -->
     <script th:src="@{../resources/vendors/components/flot/jquery.flot.js}"></script>
     <script th:src="@{../resources/vendors/components/flot.curvedlines/curvedLines.js}"></script>
@@ -67,6 +74,9 @@
     <script th:src="@{../resources/vendors/components/flot/jquery.flot.pie.js}"></script>
     <script th:src="@{../resources/vendors/components/flot.tooltip/js/jquery.flot.tooltip.min.js}"></script>
     <script th:src="@{../resources/vendors/components/angular-nouislider/src/nouislider.min.js}"></script>
+    <script th:src="@{../resources/vendors/input-mask/input-mask.min.js}"></script>
+    <script th:src="@{../resources/vendors/components/chosen/chosen.jquery.min.js}"></script>
+    <script th:src="@{../resources/vendors/components/angular-chosen-localytics/chosen.js}"></script>
     
     <!-- App level -->
     <script th:src="@{../resources/js/app.js}"></script>
@@ -76,8 +86,8 @@
     
     <!-- Controller level -->
     <script th:src="@{../resources/js/controllers/main.js}"></script>
-    <script th:src="@{../resources/js/controllers/tx-jurisdiction.js}"></script>
-
+    <script th:src="@{../resources/js/controllers/PermissionDictionaryController.js?v=2.1}"></script>
+    <script th:src="@{../resources/js/controllers/PermissionMenuController.js?v=2.1}"></script>
 
     <!-- Template Modules -->
     <script th:src="@{../resources/js/modules/template.js}"></script>
