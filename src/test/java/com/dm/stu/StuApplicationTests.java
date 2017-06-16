@@ -1,50 +1,50 @@
 package com.dm.stu;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+//import org.junit.Before;
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.test.context.junit4.SpringRunner;
+//import org.springframework.test.web.servlet.MockMvc;
+//import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+//import org.springframework.web.context.WebApplicationContext;
+//
+//import com.dm.stu.service.TxJurisdictionService;
+//import com.dm.stu.service.UserService;
+//import com.fasterxml.jackson.core.JsonProcessingException;
 
-import com.dm.stu.service.TxJurisdictionService;
-import com.dm.stu.service.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class StuApplicationTests {
-
-	MockMvc mvc;
-
-	@Autowired
-	WebApplicationContext webApplicationConnect;
-
-	@Autowired
-	UserService userService;
-
-	@Autowired
-	TxJurisdictionService systemJurisdictionService;
-
-	@Before
-	public void setUp() throws JsonProcessingException {
-		mvc = MockMvcBuilders.webAppContextSetup(webApplicationConnect).build();
-	}
-
-	@Test
-	public void UserIdEncodeTest() {
-	}
-
-	@Test
-	public void testTransactional() throws Exception {
-		// userService.save();
-	}
-
-	@Test
-	public void testController() throws Exception {
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//public class StuApplicationTests {
+//
+//	MockMvc mvc;
+//
+//	@Autowired
+//	WebApplicationContext webApplicationConnect;
+//
+//	@Autowired
+//	UserService userService;
+//
+//	@Autowired
+//	TxJurisdictionService systemJurisdictionService;
+//
+//	@Before
+//	public void setUp() throws JsonProcessingException {
+//		mvc = MockMvcBuilders.webAppContextSetup(webApplicationConnect).build();
+//	}
+//
+//	@Test
+//	public void UserIdEncodeTest() {
+//	}
+//
+//	@Test
+//	public void testTransactional() throws Exception {
+//		// userService.save();
+//	}
+//
+//	@Test
+//	public void testController() throws Exception {
 //		String uri = "/welcome";
 //		RequestBuilder builder = MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON);
 //		MvcResult mvcResult = mvc.perform(builder).andReturn();
@@ -52,10 +52,10 @@ public class StuApplicationTests {
 //		String content = mvcResult.getResponse().getContentAsString();
 //		Assert.assertEquals(status, 200);
 //		Assert.assertNotNull(content);
-	}
-
-	@Test
-	public void testSystemJurisdictionService() {
+//	}
+//
+//	@Test
+//	public void testSystemJurisdictionService() {
 //		Role role = new Role();
 //		role.setRoleId(PublicUtil.id());
 //		role.setRoleName("系统管理员");
@@ -103,6 +103,6 @@ public class StuApplicationTests {
 //		systemJurisdictionService.deleteRole(role.getRoleId());
 //		systemJurisdictionService.deletePermission(permission.getPermissionId());
 //		systemJurisdictionService.deletePermissionGroup(permissionGroup.getPermissionGroupId());
-	}
+//	}
 
-}
+//}
